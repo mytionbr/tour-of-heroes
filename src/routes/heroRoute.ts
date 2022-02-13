@@ -1,27 +1,26 @@
-import { Router } from "express";
-import { HeroController } from "../controllers/heroController";
-
+import { Router } from 'express';
+import { HeroController } from '../controllers/heroController';
 
 export class HeroRoute {
-    private route = Router();
-    private controller: HeroController
+  private route = Router();
+  private controller: HeroController;
 
-    constructor(){
-        this.init();
-        this.setupControllers()
-    }
+  constructor() {
+    this.init();
+    this.setupControllers();
+  }
 
-    init(){
-        this.controller = new HeroController();
-    }
+  init() {
+    this.controller = new HeroController();
+  }
 
-    setupControllers(){
-        this.route.get('/', this.controller.getAll)
-    }
+  setupControllers() {
+    this.route.get('/', this.controller.getAll);
+  }
 
-    getRoutes(): Router{
-        return this.route
-    }
+  getRoutes(): Router {
+    return this.route;
+  }
 }
 
-export default HeroRoute
+export default HeroRoute;
