@@ -1,0 +1,1 @@
+{"version":3,"file":"heroService.js","sourceRoot":"","sources":["../../src/services/heroService.ts"],"names":[],"mappings":";;;AACA,mEAA+D;AAE/D,MAAM,cAAc,GAAG,IAAI,+BAAc,EAAE,CAAA;AAE3C,MAAa,WAAW;IAEpB,KAAK,CAAC,MAAM;QACR,OAAQ,MAAM,cAAc,CAAC,MAAM,EAAE,CAAA;IACzC,CAAC;CACJ;AALD,kCAKC"}
