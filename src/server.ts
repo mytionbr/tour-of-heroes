@@ -49,5 +49,9 @@ export class Server {
         }
     }
 
+    public getApp(): Application{
+        return this.app
+    }
+
     
 }
