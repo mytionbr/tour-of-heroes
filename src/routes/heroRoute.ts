@@ -23,6 +23,12 @@ export class HeroRoute {
     this.router
       .route('/:heroId')
       .delete(this.controller.remove)
+      .put(this.controller.update)
+      .get(this.controller.findById)
+
+    this.router
+      .route('/name/:heroName')
+      .get(this.controller.findByName)
   }
 
   getRoutes(): Router {

@@ -20,4 +20,13 @@ export class HeroService {
   public async remove(hero: Hero): Promise<void>{
     await heroRepository.remove(hero);
   }
+
+  public async update(id: number, hero: Hero): Promise<void>{
+    await heroRepository.update(id, hero);
+  }
+
+  public async findByName(name: string): Promise<Hero[]> {
+    const heroes = heroRepository.findByName(name);
+    return heroes;
+  }
 }

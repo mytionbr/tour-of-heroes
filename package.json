@@ -4,6 +4,7 @@
    "main": "index.js",
    "scripts": {
       "test": "jest --runInBand",
+      "test:coverage":"jest --runInBand --coverage",
       "start": "npm run build && node dist/index.js",
       "start:dev": "ts-node-dev src/index.ts",
       "build": "tsc",

@@ -1,5 +1,5 @@
 import { Hero } from '../entity/Hero';
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, ILike, Like, Repository } from 'typeorm';
 import { HeroDTO } from '../dtos/heroDTO';
 
 export class HeroRepository {
@@ -31,6 +31,19 @@ export class HeroRepository {
     const repository = this.getRepository();
 
     await repository.remove(hero);
+  }
+
+  public async update(id: number, hero: Hero): Promise<void> {
+    const repository = this.getRepository();
+    await repository.update(id,hero);
+  }
+
+  public async findByName(name: string): Promise<Hero[]> {
+    const repository = this.getRepository();
+
+    const heroes = await repository.find({name: ILike(`%${name}%`)});
+
+    return heroes;
   }
 
   private getRepository(): Repository<Hero> {

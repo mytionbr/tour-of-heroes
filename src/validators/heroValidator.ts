@@ -1,3 +1,6 @@
+import { HeroDTO } from "../dtos/heroDTO";
+import { Hero } from "../entity/Hero";
+
 interface HeroErrors {
   name?: string;
 }
@@ -8,10 +11,10 @@ export const heroNameError = (name: string) => {
   }
 };
 
-export const heroValidator = (name: string) => {
+export const heroValidator = (hero: Hero | HeroDTO) => {
   const errors: HeroErrors = {};
 
-  const nameError = heroNameError(name);
+  const nameError = heroNameError(hero.name);
 
   if (nameError) {
     errors.name = nameError;
