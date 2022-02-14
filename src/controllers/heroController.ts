@@ -11,7 +11,7 @@ export class HeroController {
       const heroes = await heroService.getAll();
       res.status(200).send(heroes);
     } catch (error) {
-      res.status(400).send('Something went wrong');
+      res.status(500).send('Algo deu errado');
     }
   }
 
@@ -19,7 +19,7 @@ export class HeroController {
     try {
       const { name } = req.body;
 
-      const { valid, errors } = heroValidator(name);
+      const { valid, errors } = await heroValidator(name);
 
       if (!valid) {
         return res.status(400).send({ message: Object.values(errors) });
@@ -33,7 +33,27 @@ export class HeroController {
 
       res.status(201).send(newHero);
     } catch (error) {
-      res.status(400).send({ message: error });
+      res.status(500).send({message: 'Algo deu errado' });
+    }
+  }
+
+  public async remove(req: Request, res: Response):Promise<Response>{
+    try {
+      const heroId = Number(req.params.heroId);
+      
+      const heroToRemove = await heroService.findById(heroId);
+
+      if(!heroToRemove){
+        return res.status(404).send({message: 'Herói não cadastrado'})
+      }
+
+      await heroService.remove(heroToRemove);
+
+      res.status(200).send({message: 'Herói removido com sucesso!'});
+
+    } catch (error) {
+     
+      res.status(500).send({message: 'Algo deu errado'})
     }
   }
 }

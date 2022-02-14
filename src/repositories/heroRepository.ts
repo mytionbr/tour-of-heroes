@@ -15,8 +15,22 @@ export class HeroRepository {
     const repository = this.getRepository();
 
     const createdHero = await repository.create(hero);
+    const savedHero = await repository.save(createdHero);
 
-    return createdHero;
+    return savedHero;
+  }
+
+  public async findById(heroId: number): Promise<Hero> {
+    const repository = this.getRepository();
+    
+    const hero = await repository.findOne(heroId);
+    return hero;
+  }
+
+  public async remove(hero: Hero): Promise<void> {
+    const repository = this.getRepository();
+
+    await repository.remove(hero);
   }
 
   private getRepository(): Repository<Hero> {

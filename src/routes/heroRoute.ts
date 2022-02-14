@@ -19,6 +19,10 @@ export class HeroRoute {
       .route('/')
       .get(this.controller.getAll)
       .post(this.controller.create);
+
+    this.router
+      .route('/:heroId')
+      .delete(this.controller.remove)
   }
 
   getRoutes(): Router {
