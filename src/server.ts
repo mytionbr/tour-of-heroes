@@ -4,7 +4,7 @@ import { Application } from 'express';
 import * as http from 'http'
 import * as cors from 'cors'
 import * as database from './database'
-import heroRoute, { HeroRoute } from './routes/heroRoute';
+import { HeroRoute } from './routes/heroRoute';
 
 export class Server {
     private server?: http.Server;

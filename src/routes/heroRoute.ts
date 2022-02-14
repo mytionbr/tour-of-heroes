@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { HeroController } from '../controllers/heroController';
 
 export class HeroRoute {
-  private route = Router();
+  private router = Router();
   private controller: HeroController;
 
   constructor() {
@@ -15,11 +15,14 @@ export class HeroRoute {
   }
 
   setupControllers() {
-    this.route.get('/', this.controller.getAll);
+    this.router
+      .route('/')
+      .get(this.controller.getAll)
+      .post(this.controller.create);
   }
 
   getRoutes(): Router {
-    return this.route;
+    return this.router;
   }
 }
 
