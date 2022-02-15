@@ -11,7 +11,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http'
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { InMemoryDataService } from './in-memory-data.service';
-import { HeroSearchComponent } from './hero-search/hero-search.component'
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { NavLinkComponent } from './nav-link/nav-link.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { TitleComponent } from './title/title.component';
+import { HeroCardComponent } from './hero-card/hero-card.component';
+
 
 @NgModule({
   declarations: [
@@ -20,16 +27,20 @@ import { HeroSearchComponent } from './hero-search/hero-search.component'
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    NavbarComponent,
+    NavLinkComponent,
+    TitleComponent,
+    HeroCardComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    BrowserAnimationsModule,
+    CollapseModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,7 +13,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 })
 export class HeroService {
 
-  private heroesUrl = 'api/heroes'
+  private heroesUrl = 'http://127.0.0.1:3000/api/heroes'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -41,7 +41,7 @@ export class HeroService {
   }
 
   updateHero(hero: Hero): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, this.httpOptions)
+    return this.http.put(`${this.heroesUrl}/${hero.id}`, hero, this.httpOptions)
       .pipe(
         tap(_ => this.log(`updated hero id=${hero.id}`)),
         catchError(this.handleError<any>(`updateHero`))
@@ -71,7 +71,7 @@ export class HeroService {
       return of([]);
     }
 
-    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
+    return this.http.get<Hero[]>(`${this.heroesUrl}/name/${term}`)
       .pipe(
         tap(x => x.length ? 
           this.log(`found heroes matching "${term}"`) :
