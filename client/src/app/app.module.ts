@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TitleComponent } from './title/title.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
+import { DashboardCardComponent } from './dashboard-card/dashboard-card.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { HeroCardComponent } from './hero-card/hero-card.component';
     NavLinkComponent,
     TitleComponent,
     HeroCardComponent,
+    DashboardCardComponent,
 
   ],
   imports: [

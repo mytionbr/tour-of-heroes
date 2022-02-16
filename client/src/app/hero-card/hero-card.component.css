@@ -1,3 +1,7 @@
 .card-hero{
-    width: 18rem;
+   width: 15rem;
+}
+
+.hero-img {
+    max-height: 15rem;
 }

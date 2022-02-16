@@ -1,5 +1,5 @@
-<div class="card card-hero ">
-    <img src="..." class="card-img-top" alt="...">
+<div class="card card-hero h-100">
+    <img src="https://m.media-amazon.com/images/P/B075RLFWHK.01._SCLZZZZZZZ_SX500_.jpg" class="card-img-top hero-img" alt="...">
     <div class="card-body">
         <h5 class="card-title">{{ hero.name }}</h5>
         <p class="card-text text-center"></p>
@@ -7,8 +7,7 @@
             <a routerLink="/detail/{{ hero.id }}" class="btn btn-primary">
                 Detalhes
             </a>
-            <button type="button" class="btn btn-danger" 
-                (click)="delete()">Excluir</button>
+            <button type="button" class="btn btn-danger" (click)="delete()">Excluir</button>
         </div>
     </div>
 </div>

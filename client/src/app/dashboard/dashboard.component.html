@@ -1,12 +1,11 @@
-<app-title title="Top Heroes"></app-title>
+<div class="container-fluid bg-dark p-3">
+    <app-title color="text-white" title="Top Heroes"></app-title>
 
-<div class="heroes-menu">
-    <a *ngFor="let hero of heroes"
-        routerLink="/detail/{{hero.id}}">
-        {{hero.name}}
-    </a>
+    <div class="container-md d-flex flex-row justify-content-around align-content-between flex-wrap mx-auto my-4">
+        <div class="mb-2 mb-md-0" *ngFor="let hero of heroes">
+            <app-dashboard-card link="/detail/{{hero.id}}" name="{{hero.name}}"></app-dashboard-card>
+        </div>
+    </div>
 </div>
-
-
 
 <app-hero-search></app-hero-search>
