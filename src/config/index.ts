@@ -10,7 +10,8 @@ const dbDetails = {
   user: process.env.USER_NAME,
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
-  port: process.env.DATABASE_PORT
+  port: process.env.DATABASE_PORT,
+  databaseUrl: process.env.DATABASE_URL
 };
 
 const ormconfig: ConnectionOptions = {
@@ -25,7 +26,8 @@ const ormconfig: ConnectionOptions = {
   entities: [isProd ? 'dist/entity/**/*.js' : 'src/entity/**/*.ts'],
   ssl: {
     rejectUnauthorized: false
-  }
+  },
+  url: dbDetails.databaseUrl
 };
 
 const config = {
