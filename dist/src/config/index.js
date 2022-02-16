@@ -19,7 +19,10 @@ const ormconfig = {
     database: dbDetails.database,
     synchronize: true,
     logging: false,
-    entities: [isProd ? 'dist/entity/**/*.js' : 'src/entity/**/*.ts']
+    entities: [isProd ? 'dist/entity/**/*.js' : 'src/entity/**/*.ts'],
+    ssl: {
+        rejectUnauthorized: false
+    }
 };
 const config = {
     port: Number(process.env.PORT),
