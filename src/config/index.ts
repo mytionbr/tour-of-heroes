@@ -17,6 +17,9 @@ const ormconfig: ConnectionOptions = {
   entities: [isProd ? 'dist/entity/**/*.js' : 'src/entity/**/*.ts'],
   ssl: {
     rejectUnauthorized: false
+  },
+  extra: {
+    ssl: isProd ? true : false
   }
 };
 
