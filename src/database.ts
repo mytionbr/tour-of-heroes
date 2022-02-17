@@ -4,7 +4,6 @@ import config from "./config";
 
 export const connect = async (): Promise<void> => {
     const { ormconfig } = config
-    console.log(ormconfig)
     await createConnection(ormconfig);
     console.log('Connected database');  
 }
