@@ -6,6 +6,7 @@ const express = require("express");
 const cors = require("cors");
 const database = require("./database");
 const heroRoute_1 = require("./routes/heroRoute");
+const path = require("path");
 class Server {
     constructor(port = 3000) {
         this.port = port;
@@ -14,6 +15,7 @@ class Server {
     }
     async init() {
         this.setupExpress();
+        this.setupClient();
         await this.setupDatabase();
         await this.setupRoutes();
     }
@@ -28,6 +30,12 @@ class Server {
     }
     async setupDatabase() {
         await this.database.connect();
+    }
+    setupClient() {
+        this.app.use(express.static(path.join(__dirname, '../client/build')));
+        this.app.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname, '../client/build/index.html'));
+        });
     }
     start() {
         this.server = this.app.listen(this.port, () => {

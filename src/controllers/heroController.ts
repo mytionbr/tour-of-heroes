@@ -12,6 +12,7 @@ export class HeroController {
       const heroes = await heroService.getAll();
       res.status(200).send(heroes);
     } catch (error) {
+      console.log(error)
       res.status(500).send('Algo deu errado');
     }
   }

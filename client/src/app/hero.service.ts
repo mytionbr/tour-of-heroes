@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 })
 export class HeroService {
 
-  private heroesUrl = 'http://127.0.0.1:3000/api/heroes'
+  private heroesUrl = environment.api_url
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

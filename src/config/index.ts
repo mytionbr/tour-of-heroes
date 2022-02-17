@@ -16,18 +16,13 @@ const dbDetails = {
 
 const ormconfig: ConnectionOptions = {
   type: 'postgres',
-  host: dbDetails.host,
-  port: Number(dbDetails.port),
-  username: dbDetails.user,
-  password: dbDetails.password,
-  database: dbDetails.database,
   synchronize: true,
   logging: false,
+  url: dbDetails.databaseUrl,
   entities: [isProd ? 'dist/entity/**/*.js' : 'src/entity/**/*.ts'],
   ssl: {
     rejectUnauthorized: false
-  },
-  url: dbDetails.databaseUrl
+  }
 };
 
 const config = {

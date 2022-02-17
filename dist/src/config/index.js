@@ -8,17 +8,14 @@ const dbDetails = {
     user: process.env.USER_NAME,
     database: process.env.DATABASE,
     password: process.env.PASSWORD,
-    port: process.env.DATABASE_PORT
+    port: process.env.DATABASE_PORT,
+    databaseUrl: process.env.DATABASE_URL
 };
 const ormconfig = {
     type: 'postgres',
-    host: dbDetails.host,
-    port: Number(dbDetails.port),
-    username: dbDetails.user,
-    password: dbDetails.password,
-    database: dbDetails.database,
     synchronize: true,
     logging: false,
+    url: dbDetails.databaseUrl,
     entities: [isProd ? 'dist/entity/**/*.js' : 'src/entity/**/*.ts'],
     ssl: {
         rejectUnauthorized: false

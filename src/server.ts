@@ -1,10 +1,11 @@
 import bodyParser = require('body-parser');
 import * as express from 'express'
-import { Application } from 'express';
+import { Application, Request, Response } from 'express';
 import * as http from 'http'
 import * as cors from 'cors'
 import * as database from './database'
 import { HeroRoute } from './routes/heroRoute';
+import * as path from 'path'
 
 export class Server {
     private server?: http.Server;
@@ -17,6 +18,7 @@ export class Server {
         this.setupExpress();
         await this.setupDatabase();
         await this.setupRoutes();
+        this.setupClient();
     }
 
     private setupRoutes(): void{
@@ -34,6 +36,13 @@ export class Server {
 
     private async setupDatabase(): Promise<void> {
         await this.database.connect();
+    }
+
+    private setupClient(): void {
+        this.app.use(express.static(path.join(__dirname, '../client/dist/angular-tour-of-heroes')));
+        this.app.get('*', (req: Request, res: Response) =>{
+            res.sendFile(path.join(__dirname, '../client/dist/angular-tour-of-heroes/index.html'))
+        })
     }
 
     public start(): void {
