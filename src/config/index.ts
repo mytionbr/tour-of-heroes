@@ -15,9 +15,12 @@ const ormconfig: ConnectionOptions = {
   logging: false,
   url: dbDetails.databaseUrl,
   entities: [isProd ? 'dist/entity/**/*.js' : 'src/entity/**/*.ts'],
-  ssl: {
-    rejectUnauthorized: false
-  }  
+  ssl: true,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  }
 };
 
 const config = {
