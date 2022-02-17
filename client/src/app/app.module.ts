@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http'
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
-import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavLinkComponent } from './nav-link/nav-link.component'
@@ -19,6 +18,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TitleComponent } from './title/title.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { DashboardCardComponent } from './dashboard-card/dashboard-card.component';
+import { HeroFormComponent } from './hero-form/hero-form.component';
 
 
 @NgModule({
@@ -34,6 +34,7 @@ import { DashboardCardComponent } from './dashboard-card/dashboard-card.componen
     TitleComponent,
     HeroCardComponent,
     DashboardCardComponent,
+    HeroFormComponent,
 
   ],
   imports: [
