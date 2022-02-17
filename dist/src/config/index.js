@@ -12,6 +12,9 @@ const ormconfig = {
     logging: false,
     url: dbDetails.databaseUrl,
     entities: [isProd ? 'dist/src/entity/**/*.js' : 'src/entity/**/*.ts'],
+    ssl: {
+        rejectUnauthorized: false
+    }
 };
 const config = {
     port: Number(process.env.PORT),
