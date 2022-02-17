@@ -19,6 +19,7 @@ import { TitleComponent } from './title/title.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { DashboardCardComponent } from './dashboard-card/dashboard-card.component';
 import { HeroFormComponent } from './hero-form/hero-form.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { HeroFormComponent } from './hero-form/hero-form.component';
     HeroCardComponent,
     DashboardCardComponent,
     HeroFormComponent,
+    FooterComponent,
 
   ],
   imports: [

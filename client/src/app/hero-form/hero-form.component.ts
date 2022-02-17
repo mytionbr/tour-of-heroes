@@ -19,6 +19,7 @@ export class HeroFormComponent implements OnInit {
   }
 
   onSubmit(form:any){
+    this.hero.name
     if(!this.hero.name){return;}
     this.handleAdd.emit(form.value);
   }

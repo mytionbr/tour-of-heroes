@@ -1,10 +1,10 @@
-<div class="mx-auto col-6 border border-4 py-3 px-4 my-5 bg-light rounded ">
-    <h4 class="text-center">Novo Herói</h4>
+<div class="mx-auto col-6 border  py-3 px-4 my-5 form-bg rounded shadow">
+    <h4 class="text-center text-white">Novo Herói</h4>
     <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
         <div class="mb-3">
-            <label for="name" class="form-label">Nome</label>
+            <label for="name" class="form-label text-white">Nome</label>
             <input type="text" placeholder="ex: batman" class="form-control" id="name" name="name" [(ngModel)]="hero.name">
         </div>
-        <button type="submit" class="btn btn-primary">Adicionar</button>
+        <button type="submit" class="btn btn-add text-white">Adicionar</button>
     </form>
 </div>
