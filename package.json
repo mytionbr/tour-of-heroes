@@ -5,7 +5,7 @@
    "scripts": {
       "test": "jest --runInBand",
       "test:coverage":"jest --runInBand --coverage",
-      "start": "node dist/index.js",
+      "start": "node dist/src/index.js",
       "start:dev": "ts-node-dev src/index.ts",
       "build": "node_modules/typescript/bin/tsc",
       "lint": "eslint . --ext .ts",

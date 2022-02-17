@@ -6,6 +6,7 @@ const typeorm_1 = require("typeorm");
 const config_1 = require("./config");
 const connect = async () => {
     const { ormconfig } = config_1.default;
+    console.log(ormconfig);
     await (0, typeorm_1.createConnection)(ormconfig);
     console.log('Connected database');
 };
