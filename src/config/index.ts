@@ -6,11 +6,6 @@ dotenv.config();
 const isProd = process.env.MODE === 'prod';
 
 const dbDetails = {
-  host: process.env.HOST,
-  user: process.env.USER_NAME,
-  database: process.env.DATABASE,
-  password: process.env.PASSWORD,
-  port: process.env.DATABASE_PORT,
   databaseUrl: process.env.DATABASE_URL
 };
 
