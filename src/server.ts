@@ -40,6 +40,7 @@ export class Server {
 
     private setupClient(): void {
         const __dirname = path.resolve()
+        console.log(__dirname)
         this.app.use(express.static(path.join(__dirname, '/client/dist/angular-tour-of-heroes')));
         this.app.get('*', (req: Request, res: Response) =>{
             res.sendFile(path.join(__dirname, '/client/dist/angular-tour-of-heroes/index.html'))
