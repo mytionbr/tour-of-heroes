@@ -1,3 +1,12 @@
-<div class="d-flex flex-column sidebar d-none d-md-block min-vh-100 sticky-top">
-    opa
+<div class="d-none d-md-flex flex-column sidebar shadow-lg 
+    border-0 min-vh-100 sticky-top
+    align-items-center pt-3">
+    <div class="d-flex  flex-column align-items-center">
+        <a routerLink="/">
+            <i class="bi bi-lightning-charge-fill icon-brand "></i>
+        </a>
+        <i class="bi bi-search search-icon my-3"></i>
+        <app-sidebar-link name="Home" href="/dashboard" icon="bi bi-house" ></app-sidebar-link>
+        <app-sidebar-link name="Heróis" href="/heroes" icon="bi bi-people" ></app-sidebar-link>
+    </div>
 </div>

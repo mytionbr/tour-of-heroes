@@ -21,6 +21,7 @@ import { DashboardCardComponent } from './dashboard-card/dashboard-card.componen
 import { HeroFormComponent } from './hero-form/hero-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarLinkComponent } from './sidebar-link/sidebar-link.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HeroFormComponent,
     FooterComponent,
     SidebarComponent,
+    SidebarLinkComponent,
 
   ],
   imports: [
