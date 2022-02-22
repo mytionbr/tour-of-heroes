@@ -1,6 +1,12 @@
-<h1 class="text-center text-white">Tour of heroes</h1>
-<div class="container-fluid py-5 banner-bg ">
-    <app-title color="text-white" title="Top Heroes"></app-title>
+<h1 class="text-center text-white mb-5">Tour of heroes</h1>
+
+<app-session [popularHeroes]="popularHeroes" title="Marvel"></app-session>
+<app-session [popularHeroes]="popularHeroes" title="DC"></app-session>
+<app-session [popularHeroes]="popularHeroes" title="Anime"></app-session>
+<app-session [popularHeroes]="popularHeroes" title="Diversos"></app-session>
+
+<div class="container-fluid py-4 bg-white ">
+    <app-title color="text-dark" title="Heróis mais populares"></app-title>
 
     <div class="container-md d-flex flex-row justify-content-around align-content-between flex-wrap mx-auto my-4">
         <div class="mb-2 mb-md-0" *ngFor="let hero of heroes">
@@ -8,5 +14,3 @@
         </div>
     </div>
 </div>
-
-<app-hero-search></app-hero-search>

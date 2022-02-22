@@ -1,6 +1,20 @@
-@import '../../styles.scss';
+@import '../../styles/variables';
 
 .session-title{
     padding: 1rem;
     background-color: $red-500;
+    display: inline-block;
+    min-width: 5rem;
+}
+
+.popular-hero-card{
+    width: 12rem;
+    color: $indigo-800;    
+}
+.link{
+    text-decoration: none;
+}
+
+.link-header{
+    color: $indigo-800; 
 }

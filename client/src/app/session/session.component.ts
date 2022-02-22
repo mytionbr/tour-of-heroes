@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Hero } from '../hero';
 
 @Component({
   selector: 'app-session',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./session.component.scss']
 })
 export class SessionComponent implements OnInit {
+
+  @Input() title: string = '';
+  @Input('popularHeroes') heroes: Hero[] = [];
 
   constructor() { }
 
