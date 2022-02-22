@@ -1,12 +1,20 @@
 <div class="d-none d-md-flex flex-column sidebar shadow-lg 
     border-0 min-vh-100 sticky-top
-    align-items-center pt-3">
-    <div class="d-flex  flex-column align-items-center">
-        <a routerLink="/">
-            <i class="bi bi-lightning-charge-fill icon-brand "></i>
-        </a>
-        <i class="bi bi-search search-icon my-3"></i>
-        <app-sidebar-link name="Home" href="/dashboard" icon="bi bi-house" ></app-sidebar-link>
-        <app-sidebar-link name="Heróis" href="/heroes" icon="bi bi-people" ></app-sidebar-link>
-    </div>
+    align-items-center py-3">
+
+    <a routerLink="/">
+        <i class="bi bi-lightning-charge-fill icon-brand "></i>
+    </a>
+    <i class="bi bi-search my-3 link-icon"></i>
+    <app-sidebar-link name="Home" href="/dashboard" icon="bi bi-house"></app-sidebar-link>
+    <app-sidebar-link name="Comunidade" href="/heroes" icon="bi bi-people"></app-sidebar-link>
+    <app-sidebar-link name="Meus heróis" href="/heroes" icon="bi bi-book"></app-sidebar-link>
+    <app-sidebar-link name="Novo herói" href="/heroes" icon="bi bi-plus-lg"></app-sidebar-link>
+    
+    <div class="flex-grow-1"></div>
+    <a routerLink="/">
+        <i class="bi bi-person-circle link-icon"></i>
+    </a>
+
+
 </div>

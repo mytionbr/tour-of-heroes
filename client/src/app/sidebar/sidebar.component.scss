@@ -1,7 +1,4 @@
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@import '../../styles.scss';
 
 .sidebar{
     background-color: $yellow-500;
@@ -16,7 +13,7 @@
     font-size: 0.8rem;
 }
 
-.search-icon{
-    font-size: 1.5rem;
+.link-icon{
+    font-size: 1.8rem;
     color: $pink-800;
 }
