@@ -22,7 +22,7 @@ import { HeroFormComponent } from './hero-form/hero-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarLinkComponent } from './sidebar-link/sidebar-link.component';
-import { SessionComponent } from './session/session.component';
+import { SectionComponent } from './section/section.component';
 
 
 @NgModule({
@@ -42,7 +42,7 @@ import { SessionComponent } from './session/session.component';
     FooterComponent,
     SidebarComponent,
     SidebarLinkComponent,
-    SessionComponent,
+    SectionComponent,
 
   ],
   imports: [

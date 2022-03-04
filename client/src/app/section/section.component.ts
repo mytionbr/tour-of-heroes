@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 
 @Component({
-  selector: 'app-session',
-  templateUrl: './session.component.html',
-  styleUrls: ['./session.component.scss']
+  selector: 'app-section',
+  templateUrl: './section.component.html',
+  styleUrls: ['./section.component.scss']
 })
-export class SessionComponent implements OnInit {
+export class SectionComponent implements OnInit {
 
   @Input() title: string = '';
   @Input('popularHeroes') heroes: Hero[] = [];

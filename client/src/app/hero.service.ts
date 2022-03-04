@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 })
 export class HeroService {
 
-  private heroesUrl = environment.api_url
+  private baseUrl = environment.api_url
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -26,7 +26,7 @@ export class HeroService {
   ) { }
 
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
+    return this.http.get<Hero[]>(this.baseUrl)
       .pipe(
         tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<Hero[]>('getHeroes', []))
@@ -34,7 +34,7 @@ export class HeroService {
   }
 
   getHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`
+    const url = `${this.baseUrl}/${id}`
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
@@ -42,7 +42,7 @@ export class HeroService {
   }
 
   updateHero(hero: Hero): Observable<any> {
-    return this.http.put(`${this.heroesUrl}/${hero.id}`, hero, this.httpOptions)
+    return this.http.put(`${this.baseUrl}/${hero.id}`, hero, this.httpOptions)
       .pipe(
         tap(_ => this.log(`updated hero id=${hero.id}`)),
         catchError(this.handleError<any>(`updateHero`))
@@ -50,7 +50,7 @@ export class HeroService {
   }
 
   addHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions)
+    return this.http.post<Hero>(this.baseUrl, hero, this.httpOptions)
       .pipe(
         tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
         catchError(this.handleError<Hero>('addHero'))
@@ -58,7 +58,7 @@ export class HeroService {
   }
 
   deleteHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.baseUrl}/${id}`;
 
     return this.http.delete<Hero>(url, this.httpOptions)
       .pipe(
@@ -72,7 +72,7 @@ export class HeroService {
       return of([]);
     }
 
-    return this.http.get<Hero[]>(`${this.heroesUrl}/name/${term}`)
+    return this.http.get<Hero[]>(`${this.baseUrl}/name/${term}`)
       .pipe(
         tap(x => x.length ? 
           this.log(`found heroes matching "${term}"`) :
@@ -91,7 +91,6 @@ export class HeroService {
 
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
-
   }
 
 }
