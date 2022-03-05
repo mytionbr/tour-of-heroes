@@ -1,11 +1,7 @@
 <h1 class="text-center text-white mb-5">Tour of heroes</h1>
 
-<app-section [popularHeroes]="popularHeroes" title="Marvel"></app-section>
-<app-section [popularHeroes]="popularHeroes" title="DC"></app-section>
-<app-section [popularHeroes]="popularHeroes" title="Anime"></app-section>
-<app-section [popularHeroes]="popularHeroes" title="Diversos"></app-section>
 
-<div class="container-fluid py-4 bg-white ">
+<div class="container py-4 bg-white ">
     <app-title color="text-dark" title="Heróis mais populares"></app-title>
 
     <div class="container-md d-flex flex-row justify-content-around align-content-between flex-wrap mx-auto my-4">
@@ -14,3 +10,9 @@
         </div>
     </div>
 </div>
+
+<app-section [popularHeroes]="popularHeroes" title="Marvel"></app-section>
+<app-section [popularHeroes]="popularHeroes" title="DC"></app-section>
+<app-section [popularHeroes]="popularHeroes" title="Anime"></app-section>
+<app-section [popularHeroes]="popularHeroes" title="Diversos"></app-section>
+

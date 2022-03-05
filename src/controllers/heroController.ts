@@ -25,7 +25,7 @@ export class HeroController {
         name: name
       };
 
-      const { valid, errors } = await heroValidator(hero);
+      const { valid, errors } = heroValidator(hero);
 
       if (!valid) {
         return res.status(400).send({ message: Object.values(errors) });
@@ -63,7 +63,7 @@ export class HeroController {
       const heroId = Number(req.params.heroId);
       const heroToUpdate = req.body;
 
-      const { valid, errors } = await heroValidator(heroToUpdate);
+      const { valid, errors } = heroValidator(heroToUpdate);
 
       if (!valid) {
         return res.status(400).send({ message: Object.values(errors) });

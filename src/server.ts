@@ -6,6 +6,7 @@ import * as cors from 'cors'
 import * as database from './database'
 import { HeroRoute } from './routes/heroRoute';
 import * as path from 'path'
+import AuthRoute from './routes/authRoute';
 
 export class Server {
     private server?: http.Server;
@@ -25,8 +26,10 @@ export class Server {
         const rootURL = "/api"
 
         const heroRoutes = new HeroRoute().getRoutes();
-
+        const authRoutes = new AuthRoute().getRoutes();
+        
         this.app.use(rootURL + '/heroes', heroRoutes);
+        this.app.use(rootURL + '/auth', authRoutes);
     }
 
     private setupExpress(): void {
@@ -40,7 +43,7 @@ export class Server {
 
     private setupClient(): void {
         const __dirname = path.resolve()
-        console.log(__dirname)
+
         this.app.use(express.static(path.join(__dirname, '/client/dist/angular-tour-of-heroes')));
         this.app.get('*', (req: Request, res: Response) =>{
             res.sendFile(path.join(__dirname, '/client/dist/angular-tour-of-heroes/index.html'))
