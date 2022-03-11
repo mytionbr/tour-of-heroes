@@ -14,7 +14,7 @@ import { environment } from '../environments/environment';
 })
 export class HeroService {
 
-  private baseUrl = environment.api_url
+  private baseUrl = environment.api_url + '/heroes'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

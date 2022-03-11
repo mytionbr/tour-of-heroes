@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../user';
+import { UserResponse } from '../user';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class AuthService {
 
   signin(email: string, password: string) {
     const url = `${this.baseUrl}/auth/signin`
-    return this.http.post<User>(url, {email, password});
+    return this.http.post<UserResponse>(url, {email, password});
   }
 
 }

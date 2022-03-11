@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { isArray as isArrayFunction } from '../../../util/isArray';
+import { UserLogin } from '../../user';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -11,6 +13,9 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   submitted: boolean = false;
+  loading: boolean = false;
+  user?:UserLogin
+  errors: String[] | string = ''
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
@@ -35,14 +40,35 @@ export class LoginComponent implements OnInit {
   }
 
   verifyValidPassword() {
-    console.log(this.loginFormControl['password'].errors?.['minlength'])
     return this.loginFormControl['password'].touched && this.loginFormControl['password'].dirty && this.loginFormControl['password'].errors?.['minlength']
   }
 
+  isArray(element: any){
+    return isArrayFunction(element);
+  }
+
   onSubmit() {
+    
     this.submitted = true;
     if (this.loginForm.valid) {
-      alert('Login efetuado com sucesso!')
+      this.loading = true;
+
+      this.user = {
+        email: this.loginFormControl['email'].value,
+        password: this.loginFormControl['password'].value
+      }
+
+      this.authService.signin(this.user.email, this.user.password)
+        .subscribe({
+          next: (res) =>{
+            localStorage.setItem('token', res.token);
+            this.loading = false;
+          },
+          error: (e) => {
+            this.loading = false;
+            this.errors = e.error.message
+          }
+        });
     }
   }
 

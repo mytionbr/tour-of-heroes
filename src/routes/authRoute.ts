@@ -17,6 +17,9 @@ export class AuthRoute {
   setupControllers() {
    this.router.route('/signup')
     .post(this.controller.signup)
+
+    this.router.route('/signin')
+    .post(this.controller.singin)
   }
 
   getRoutes(): Router {
