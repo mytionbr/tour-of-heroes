@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
@@ -23,6 +23,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarLinkComponent } from './sidebar-link/sidebar-link.component';
 import { SectionComponent } from './section/section.component';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { SectionComponent } from './section/section.component';
     FooterComponent,
     SidebarComponent,
     SidebarLinkComponent,
-    SectionComponent,
+    SectionComponent 
 
   ],
   imports: [
@@ -51,6 +52,8 @@ import { SectionComponent } from './section/section.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    AuthModule,
     CollapseModule.forRoot()
   ],
   providers: [],

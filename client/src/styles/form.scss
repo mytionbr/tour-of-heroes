@@ -1,0 +1,16 @@
+@import './variables';
+
+.login-header{
+    background-color: $indigo-800;
+}
+
+.btn-submit{
+    background-color: $indigo-600;
+    color: white;
+}
+
+.form-control:focus{
+    border-color: white;
+    box-shadow: 1px 1px 15px 0px rgba(0,0,0,0.57);
+    outline: 0 none;
+}

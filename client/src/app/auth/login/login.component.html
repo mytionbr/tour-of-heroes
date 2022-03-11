@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="d-flex flex-column col-sm-12 col-md-6 m-auto">
+            <div class="m-auto py-3 login-header w-100">
+                <h1 class="text-white text-center">Login</h1>
+            </div>
+            <div class="py-3 px-3 w-100 bg-white">
+                <form [formGroup]="form">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email">                    
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password">                    
+                    </div>
+                    <div class="mb-3">
+                        <p>Não possue uma conta? Se registe <a routerLink="/signup">aqui</a> 🙂</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-submit w-100">Entrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
