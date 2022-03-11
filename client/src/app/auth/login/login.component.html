@@ -5,14 +5,26 @@
                 <h1 class="text-white text-center">Login</h1>
             </div>
             <div class="py-3 px-3 w-100 bg-white">
-                <form [formGroup]="form">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email">                    
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="email" formControlName="email">
+                        <span class="text-danger" *ngIf="verifyValidRequired('email')">
+                            O e-mail é obrigatório
+                        </span>
+                        <span class="text-danger" *ngIf="verifyValidEmail()">
+                            Digite um e-email valido
+                        </span>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password">                    
+                        <input type="password" class="form-control" id="password" formControlName="password">
+                        <span class="text-danger" *ngIf="verifyValidRequired('password')">
+                            A senha é obrigatória
+                        </span>
+                        <span class="text-danger" *ngIf="verifyValidPassword()">
+                            A senha deve ter pelo menos 6 caracteres
+                        </span>
                     </div>
                     <div class="mb-3">
                         <p>Não possue uma conta? Se registe <a routerLink="/signup">aqui</a> 🙂</p>
