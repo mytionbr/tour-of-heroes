@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { isArray as isArrayFunction } from '../../../util/isArray';
 import { UserLogin } from '../../user';
 import { AuthService } from '../auth.service';
 
@@ -43,9 +42,6 @@ export class LoginComponent implements OnInit {
     return this.loginFormControl['password'].touched && this.loginFormControl['password'].dirty && this.loginFormControl['password'].errors?.['minlength']
   }
 
-  isArray(element: any){
-    return isArrayFunction(element);
-  }
 
   onSubmit() {
     
@@ -65,8 +61,9 @@ export class LoginComponent implements OnInit {
             this.loading = false;
           },
           error: (e) => {
+            console.log(e)
             this.loading = false;
-            this.errors = e.error.message
+            this.errors = e.error.message || 'Algo deu errado, tente novamente mais tarde'
           }
         });
     }

@@ -24,6 +24,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarLinkComponent } from './sidebar-link/sidebar-link.component';
 import { SectionComponent } from './section/section.component';
 import { AuthModule } from './auth/auth.module';
+import { ShowErrorsComponent } from './show-errors/show-errors.component';
+import { ShowErrorsModule } from './show-errors/show-errors.module';
 
 
 @NgModule({
@@ -44,7 +46,6 @@ import { AuthModule } from './auth/auth.module';
     SidebarComponent,
     SidebarLinkComponent,
     SectionComponent 
-
   ],
   imports: [
     BrowserModule,
@@ -54,6 +55,7 @@ import { AuthModule } from './auth/auth.module';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AuthModule,
+    ShowErrorsModule,
     CollapseModule.forRoot()
   ],
   providers: [],

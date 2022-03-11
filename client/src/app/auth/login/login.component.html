@@ -40,18 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="errors">
-                    <div class="alert alert-danger" role="alert">
-                       <div *ngIf="isArray(errors) else singleError">
-                        <p *ngFor="let error for errors">
-                            {{error}}
-                        </p>
-                       </div>
-                       <ng-template #singleError>
-                           {{errors}}
-                       </ng-template>
-                    </div>
-                </div>
+                <app-show-errors errors="{{errors}}"></app-show-errors>
             </div>
         </div>
     </div>
