@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TokenService } from 'src/app/token.service';
 import { User, UserLogin } from '../../user';
 import { AuthService } from '../auth.service';
 import { SignupValidationService } from './signup-validation.service';
@@ -17,7 +18,11 @@ export class SignupComponent implements OnInit {
   user?: User;
   errors: String[] | string = '';
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private signupValidationService: SignupValidationService) {
+  constructor(
+    private authService: AuthService, 
+    private formBuilder: FormBuilder, 
+    private signupValidationService: SignupValidationService,
+    private tokenService: TokenService) {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required]],
@@ -69,8 +74,9 @@ export class SignupComponent implements OnInit {
         .subscribe({
           next: (res)=>{
             console.log(res)
-            localStorage.setItem('token', res.token);
+            this.tokenService.setToken(res.token);
             this.loading = false;
+            this.errors = ''
           },
           error: (e)=>{
             console.log(e)

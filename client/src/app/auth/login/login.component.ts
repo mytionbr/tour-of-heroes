@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { TokenService } from 'src/app/token.service';
 import { UserLogin } from '../../user';
 import { AuthService } from '../auth.service';
 
@@ -13,13 +14,16 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted: boolean = false;
   loading: boolean = false;
-  user?:UserLogin
+  user?: UserLogin
   errors: String[] | string = ''
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private tokenService: TokenService) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.minLength(6),Validators.required]]
+      password: ['', [Validators.minLength(6), Validators.required]]
     })
   }
 
@@ -44,7 +48,7 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
-    
+
     this.submitted = true;
     if (this.loginForm.valid) {
       this.loading = true;
@@ -56,9 +60,10 @@ export class LoginComponent implements OnInit {
 
       this.authService.signin(this.user.email, this.user.password)
         .subscribe({
-          next: (res) =>{
-            localStorage.setItem('token', res.token);
+          next: (res) => {
+            this.tokenService.setToken(res.token)
             this.loading = false;
+            this.errors = ''
           },
           error: (e) => {
             console.log(e)
