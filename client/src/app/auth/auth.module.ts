@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ShowErrorsModule } from '../show-errors/show-errors.module';
+import { LoadingModule } from '../loading/loading.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ShowErrorsModule } from '../show-errors/show-errors.module';
     CommonModule,
     ReactiveFormsModule,
     AuthRoutingModule,
-    ShowErrorsModule
+    ShowErrorsModule,
+    LoadingModule
   ]
 })
 export class AuthModule { }

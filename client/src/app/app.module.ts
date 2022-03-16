@@ -26,6 +26,8 @@ import { SectionComponent } from './section/section.component';
 import { AuthModule } from './auth/auth.module';
 import { ShowErrorsComponent } from './show-errors/show-errors.component';
 import { ShowErrorsModule } from './show-errors/show-errors.module';
+import { LoadingComponent } from './loading/loading.component';
+import { LoadingModule } from './loading/loading.module';
 
 
 @NgModule({
@@ -56,6 +58,7 @@ import { ShowErrorsModule } from './show-errors/show-errors.module';
     ReactiveFormsModule,
     AuthModule,
     ShowErrorsModule,
+    LoadingModule,
     CollapseModule.forRoot()
   ],
   providers: [],

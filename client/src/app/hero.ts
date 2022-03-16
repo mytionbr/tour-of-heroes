@@ -3,4 +3,5 @@ export interface Hero {
     name: string;
     agency?: string;
     category?: string;
+    about?: string;
 }

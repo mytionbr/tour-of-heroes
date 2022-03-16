@@ -1,12 +1,75 @@
+<div class="container">
+    <button type="button" (click)="goBack()" class="btn btn-warning mb-3">Voltar</button>
+    <div *ngIf="hero">
+        <div class="row">
+            <div class="col-sm-12 col-md-5">
+                <img src="https://m.media-amazon.com/images/P/B075RLFWHK.01._SCLZZZZZZZ_SX500_.jpg" class="img-fluid "
+                    alt="foto do herói">
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="row details-box">
+                    <div *ngIf="editable else details">
+                        <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+                            <div class="col-12 mb-3">
+                                <label for="name" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="name" placeholder="Nome"
+                                    formControlName="name">
+                                <span class="text-danger" *ngIf="verifyValidRequired('name')">
+                                    O nome é obrigatório
+                                </span>
+                            </div>
+                            <div class="row">
+                            <div class="col-6 mb-3">
+                                <label for="agency" class="form-label">Grupo</label>
+                                <input type="text" class="form-control" id="agency" placeholder="Grupo"
+                                    formControlName="agency">
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="category" class="form-label">Categoria</label>
+                                <input type="text" class="form-control" id="category" placeholder="Categoria"
+                                    formControlName="category">
+                            </div>
+                        </div>
+                            <div class="col-12 mb-3">
+                                <label for="about" class="form-label">Sobre</label>
+                                <textarea type="text" class="form-control" id="about" placeholder="Sobre" formControlName="about">
+                                </textarea>
+                            </div>
+                            <div class="col-12 mt-2 mb-1">
+                                <app-loading [loading]="loading"></app-loading>
+                            </div>
+                        </form>
+                    </div>
+                    <ng-template #details>
+                        <div class="col-12 mb-3">
+                            <h1>{{hero.name}}</h1>
+                        </div>
+                        <div class="col-6">
+                            <p><span class="fw-bold">Grupo:</span>{{hero.agency}}</p>
+                        </div>
+                        <div class="col-6">
+                            <p><span class="fw-bold">Categoria:</span> {{hero.category}}</p>
+                        </div>
+                        <div class="col-12">
+                            <span class="fw-bold">Sobre:</span>
+                            <p> {{hero.about}}</p>
+                        </div>
+                    </ng-template>
 
-<div *ngIf="hero">
-    <h2>{{hero.name | uppercase}}</h2>
-    <div><span>id: </span>{{ hero.id }}</div>
-    <div>
-        <label for="name">Hero name: </label>
-        <input id="name" [(ngModel)]="hero.name" placeholder="name">
+                    <div class="mb-3"></div>
+                    <div *ngIf="editable else btnEdit">
+                        <div class="d-flex">
+                            <button class="btn btn-primary btn-lg me-2" (click)="onSubmit()">Salvar</button>
+                            <button class="btn btn-danger btn-lg" (click)="onCancel()">Cancelar</button>
+                        </div>
+                    </div>
+                    <ng-template #btnEdit>      
+                        <div class="col-12">
+                            <button class="btn btn-success btn-lg" (click)="onEdit()">Editar</button>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
     </div>
-    <button type="button" (click)="save()">save</button>
 </div>
-
-<button type="button" (click)="goBack()">go back</button>
