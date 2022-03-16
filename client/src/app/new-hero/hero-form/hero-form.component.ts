@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../../hero';
+import { HeroService } from '../../hero.service';
 
 @Component({
   selector: 'app-hero-form',
@@ -9,8 +9,6 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./hero-form.component.scss']
 })
 export class HeroFormComponent implements OnInit {
-
-  @Output() handleAdd = new EventEmitter();
 
   heroForm: FormGroup;
   submitted: boolean = false;
@@ -33,9 +31,6 @@ export class HeroFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onRestart(): void {
-    this.handleAdd.emit(true);
-  }
 
   get heroFormControl(){
     return this.heroForm.controls
@@ -59,7 +54,6 @@ export class HeroFormComponent implements OnInit {
             this.loading = false;
             this.submitted = false;
 
-            this.onRestart();
           },
           error: (errors)=> {
             this.loading = false;

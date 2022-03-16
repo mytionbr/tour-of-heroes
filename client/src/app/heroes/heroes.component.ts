@@ -14,8 +14,7 @@ export class HeroesComponent implements OnInit {
   selectedHero?: Hero;
   loading: boolean = false;
 
-  constructor(private heroService: HeroService, 
-    private messageService: MessageService) { 
+  constructor(private heroService: HeroService) { 
   }
 
   ngOnInit(): void {
@@ -29,12 +28,6 @@ export class HeroesComponent implements OnInit {
         this.heroes = heroes
         this.loading = false;
       })
-  }
-
-  add(ok: boolean): void {
-    if(ok){
-      this.getHeroes()
-    }
   }
 
   onDelete(event: any): void {

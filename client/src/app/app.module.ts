@@ -9,7 +9,6 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http'
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavLinkComponent } from './nav-link/nav-link.component'
@@ -18,16 +17,14 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TitleComponent } from './title/title.component';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { DashboardCardComponent } from './dashboard-card/dashboard-card.component';
-import { HeroFormComponent } from './hero-form/hero-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarLinkComponent } from './sidebar-link/sidebar-link.component';
 import { SectionComponent } from './section/section.component';
 import { AuthModule } from './auth/auth.module';
-import { ShowErrorsComponent } from './show-errors/show-errors.component';
 import { ShowErrorsModule } from './show-errors/show-errors.module';
-import { LoadingComponent } from './loading/loading.component';
 import { LoadingModule } from './loading/loading.module';
+import { NewHeroModule } from './new-hero/new-hero.module';
 
 
 @NgModule({
@@ -43,7 +40,6 @@ import { LoadingModule } from './loading/loading.module';
     TitleComponent,
     HeroCardComponent,
     DashboardCardComponent,
-    HeroFormComponent,
     FooterComponent,
     SidebarComponent,
     SidebarLinkComponent,
@@ -59,6 +55,7 @@ import { LoadingModule } from './loading/loading.module';
     AuthModule,
     ShowErrorsModule,
     LoadingModule,
+    NewHeroModule,
     CollapseModule.forRoot()
   ],
   providers: [],

@@ -7,9 +7,12 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
+import { NewHeroModule } from './new-hero/new-hero.module';
+import { NewHeroComponent } from './new-hero/new-hero.component';
 
 const routes: Routes = [
   { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard]},
+  { path: 'heroes/new', component: NewHeroComponent, canActivate: [AuthGuard]},
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'auth', component: AuthComponent },
