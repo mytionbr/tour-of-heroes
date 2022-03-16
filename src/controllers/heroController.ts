@@ -19,10 +19,13 @@ export class HeroController {
 
   public async create(req: Request, res: Response): Promise<Response> {
     try {
-      const { name } = req.body;
+      const { name, about, category, agency } = req.body;
       
       const hero: HeroDTO = {
-        name: name
+        name,
+        about,
+        category,
+        agency
       };
 
       const { valid, errors } = heroValidator(hero);

@@ -1,10 +1,30 @@
 <div class="mx-auto col-6 border  py-3 px-4 my-5 form-bg rounded shadow">
     <h4 class="text-center text-white">Novo Herói</h4>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+    <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
             <label for="name" class="form-label text-white">Nome</label>
-            <input type="text" placeholder="ex: batman" class="form-control" id="name" name="name" [(ngModel)]="hero.name">
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Ex: batman">
+            <span class="text-white bg-danger" *ngIf="verifyValidRequired('name')">
+                O nome é obrigatório
+            </span>
         </div>
-        <button type="submit" class="btn btn-add text-white">Adicionar</button>
+        <div class="mb-3">
+            <label for="category" class="form-label text-white">Categoria</label>
+            <input type="text" class="form-control" id="category" formControlName="category" placeholder="Ex: DC">
+        </div>
+        <div class="mb-3">
+            <label for="agency" class="form-label text-white">Grupo</label>
+            <input type="text" class="form-control" id="agency" formControlName="agency" placeholder="Ex: Liga da justiça">
+        </div>
+        <div class="mb-3">
+            <label for="about" class="form-label text-white">Sobre</label>
+            <textarea type="text" class="form-control" id="about" placeholder="Sobre" formControlName="about" placeholder="Ex: Criado em 1945 por ....">
+            </textarea>
+        </div>
+        <button class="btn btn-primary btn-lg btn-add">Adicionar</button>
     </form>
+    <div class="col-12 mt-2 mb-1">
+        <app-loading [loading]="loading"></app-loading>
+        <app-show-errors errors="{{errors}}"></app-show-errors>
+    </div>
 </div>

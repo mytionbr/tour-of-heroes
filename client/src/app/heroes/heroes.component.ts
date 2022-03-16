@@ -12,6 +12,7 @@ export class HeroesComponent implements OnInit {
 
   heroes: Hero[] = [];
   selectedHero?: Hero;
+  loading: boolean = false;
 
   constructor(private heroService: HeroService, 
     private messageService: MessageService) { 
@@ -22,22 +23,28 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void{
+    this.loading = true
     this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes)
-  }
-
-  add(hero: Hero): void {
-    console.log(hero)
-    this.heroService.addHero(hero)
-      .subscribe(hero => {
-        this.heroes.push(hero)
+      .subscribe(heroes => {
+        this.heroes = heroes
+        this.loading = false;
       })
   }
 
+  add(ok: boolean): void {
+    if(ok){
+      this.getHeroes()
+    }
+  }
+
   onDelete(event: any): void {
+    this.loading = true;
     const { hero } = event
-    this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero.id).subscribe();
+    this.heroService.deleteHero(hero.id).subscribe(
+      ()=>{
+        this.loading = false;
+        this.getHeroes();
+      });
   }
 
 }
