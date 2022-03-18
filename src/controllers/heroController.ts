@@ -20,12 +20,15 @@ export class HeroController {
   public async create(req: Request, res: Response): Promise<Response> {
     try {
       const { name, about, category, agency } = req.body;
-      
+      const userId = Number(req.auth.id);
+
+      console.log(userId)
       const hero: HeroDTO = {
         name,
         about,
         category,
-        agency
+        agency,
+        userId
       };
 
       const { valid, errors } = heroValidator(hero);

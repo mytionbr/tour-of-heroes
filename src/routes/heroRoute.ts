@@ -21,13 +21,13 @@ export class HeroRoute {
     this.router
       .route('/')
       .get(this.heroController.getAll)
-      .post(this.heroController.create);
+      .post(this.authController.isAuth,this.heroController.create);
 
     this.router
       .route('/:heroId')
       .delete(this.heroController.remove)
       .put(this.heroController.update)
-      .get(this.authController.isAuth,this.heroController.findById)
+      .get(this.heroController.findById)
 
     this.router
       .route('/name/:heroName')

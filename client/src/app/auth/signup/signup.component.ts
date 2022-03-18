@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RefreshService } from 'src/app/refresh.service';
 import { TokenService } from 'src/app/token.service';
 import { User, UserLogin } from '../../user';
 import { AuthService } from '../auth.service';
@@ -22,7 +23,8 @@ export class SignupComponent implements OnInit {
     private authService: AuthService, 
     private formBuilder: FormBuilder, 
     private signupValidationService: SignupValidationService,
-    private tokenService: TokenService) {
+    private tokenService: TokenService,
+    private refleshService: RefreshService) {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required]],
@@ -77,6 +79,7 @@ export class SignupComponent implements OnInit {
             this.tokenService.setToken(res.token);
             this.loading = false;
             this.errors = ''
+            this.refleshService.sendUpdate(true);
           },
           error: (e)=>{
             console.log(e)

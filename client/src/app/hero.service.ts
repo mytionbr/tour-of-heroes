@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { environment } from '../environments/environment';
+import { AuthService } from './auth/auth.service';
 
 
 @Injectable({
@@ -20,9 +21,14 @@ export class HeroService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
+  httpAuth = {
+    headers: new HttpHeaders({'Authorization': ''})
+  }
+
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private authService: AuthService
   ) { }
 
   getHeroes(): Observable<Hero[]> {

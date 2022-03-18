@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RefreshService } from 'src/app/refresh.service';
 import { TokenService } from 'src/app/token.service';
 import { UserLogin } from '../../user';
 import { AuthService } from '../auth.service';
@@ -20,7 +22,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private tokenService: TokenService) {
+    private tokenService: TokenService,
+    private router: Router,
+    private refleshService: RefreshService) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.minLength(6), Validators.required]]
@@ -64,6 +68,7 @@ export class LoginComponent implements OnInit {
             this.tokenService.setToken(res.token)
             this.loading = false;
             this.errors = ''
+            this.refleshService.sendUpdate(true);
           },
           error: (e) => {
             console.log(e)
