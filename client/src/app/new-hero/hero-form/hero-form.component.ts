@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Hero } from '../../hero';
 import { HeroService } from '../../hero.service';
 
@@ -15,7 +16,7 @@ export class HeroFormComponent implements OnInit {
   loading: boolean = false;
   errors: string | string[] = '';
 
-  constructor(private formBuilder: FormBuilder, private heroService: HeroService) {
+  constructor(private formBuilder: FormBuilder, private heroService: HeroService, private router: Router) {
     this.heroForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       about: [''],
@@ -53,7 +54,7 @@ export class HeroFormComponent implements OnInit {
           next: ()=> {
             this.loading = false;
             this.submitted = false;
-
+            this.router.navigate(['/heroes'])
           },
           error: (errors)=> {
             this.loading = false;

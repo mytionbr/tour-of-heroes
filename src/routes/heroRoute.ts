@@ -1,9 +1,11 @@
 import { Router } from 'express';
+import { AuthController } from '../controllers/authController';
 import { HeroController } from '../controllers/heroController';
 
 export class HeroRoute {
   private router = Router();
-  private controller: HeroController;
+  private heroController: HeroController;
+  private authController: AuthController;
 
   constructor() {
     this.init();
@@ -11,24 +13,25 @@ export class HeroRoute {
   }
 
   init() {
-    this.controller = new HeroController();
+    this.heroController = new HeroController();
+    this.authController = new AuthController();
   }
 
   setupControllers() {
     this.router
       .route('/')
-      .get(this.controller.getAll)
-      .post(this.controller.create);
+      .get(this.heroController.getAll)
+      .post(this.heroController.create);
 
     this.router
       .route('/:heroId')
-      .delete(this.controller.remove)
-      .put(this.controller.update)
-      .get(this.controller.findById)
+      .delete(this.heroController.remove)
+      .put(this.heroController.update)
+      .get(this.authController.isAuth,this.heroController.findById)
 
     this.router
       .route('/name/:heroName')
-      .get(this.controller.findByName)
+      .get(this.heroController.findByName)
   }
 
   getRoutes(): Router {

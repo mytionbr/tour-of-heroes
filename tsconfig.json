@@ -10,8 +10,11 @@
      "emitDecoratorMetadata": true,
      "experimentalDecorators": true,
      "sourceMap": true,
-     "skipLibCheck": true
+     "skipLibCheck": true,
+     "typeRoots": [
+      "./@types"
+    ],
    },
    "include": ["./src/**/*.ts", "./test/**/*.ts"],
-   "exclude": ["./node_modules/*", "dist", "client"]
+   "exclude": ["./node_modules/*", "dist", "client"],
  }
