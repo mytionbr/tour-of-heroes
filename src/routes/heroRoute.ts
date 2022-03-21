@@ -35,7 +35,7 @@ export class HeroRoute {
 
     this.router
       .route('/user/:id')
-      .get(this.authController.isAuth,this.heroController.findByUser)
+      .get(this.authController.isAuth, this.heroController.findByUser)
   }
 
   getRoutes(): Router {
