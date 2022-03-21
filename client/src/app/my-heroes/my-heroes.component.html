@@ -1,0 +1,16 @@
+<div class="container py-5">
+    <app-title title="My Heroes"></app-title>
+   
+    <div class="container my-3 ">
+        <div class="m-auto">
+            <app-loading [loading]="loading"></app-loading>
+            <app-show-errors [errors]="errors"></app-show-errors>
+        </div>
+       
+        <div class="heroes" class="row row-cols-1 row-cols-md-2 row-cols-lg-3   justify-content-center ">
+            <div class="col my-2 d-inline-flex justify-content-center" *ngFor="let hero of heroes">
+                <app-hero-card [hero]="hero" (delete)="onDelete($event)"></app-hero-card>
+            </div>
+        </div>
+    </div>
+</div>

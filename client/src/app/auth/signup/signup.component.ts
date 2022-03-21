@@ -76,7 +76,7 @@ export class SignupComponent implements OnInit {
         .subscribe({
           next: (res)=>{
             console.log(res)
-            this.tokenService.setToken(res.token);
+            this.tokenService.setUserInfo(res);
             this.loading = false;
             this.errors = ''
             this.refleshService.sendUpdate(true);

@@ -9,9 +9,10 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
 import { NewHeroModule } from './new-hero/new-hero.module';
 import { NewHeroComponent } from './new-hero/new-hero.component';
+import { MyHeroesComponent } from './my-heroes/my-heroes.component';
 
 const routes: Routes = [
-  { path: 'heroes', component: HeroesComponent, canActivate: [AuthGuard]},
+  { path: 'heroes', component: MyHeroesComponent, canActivate: [AuthGuard]},
   { path: 'heroes/new', component: NewHeroComponent, canActivate: [AuthGuard]},
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'dashboard', component: DashboardComponent },

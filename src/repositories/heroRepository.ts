@@ -13,7 +13,6 @@ export class HeroRepository {
 
   public async create(hero: HeroDTO): Promise<Hero> {
     const repository = this.getRepository();
-
     const createdHero = await repository.create(hero);
     const savedHero = await repository.save(createdHero);
 
@@ -22,7 +21,7 @@ export class HeroRepository {
 
   public async findById(heroId: number): Promise<Hero> {
     const repository = this.getRepository();
-    
+
     const hero = await repository.findOne(heroId);
     return hero;
   }
@@ -35,14 +34,27 @@ export class HeroRepository {
 
   public async update(id: number, hero: Hero): Promise<void> {
     const repository = this.getRepository();
-    await repository.update(id,hero);
+    await repository.update(id, hero);
   }
 
   public async findByName(name: string): Promise<Hero[]> {
     const repository = this.getRepository();
 
-    const heroes = await repository.find({name: ILike(`%${name}%`)});
+    const heroes = await repository.find({ name: ILike(`%${name}%`) });
 
+    return heroes;
+  }
+
+  public async findByUser(id: number): Promise<Hero[]> {
+    const repository = this.getRepository();
+
+    const heroes = await repository.find({
+      where: {
+        user: {
+          id
+        }
+      }
+    });
     return heroes;
   }
 

@@ -1,6 +1,5 @@
 export interface UserResponseDTO {
     id: number;
-    username: string;
     token: string;
 }
 

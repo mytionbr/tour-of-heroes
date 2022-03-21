@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
       this.authService.signin(this.user.email, this.user.password)
         .subscribe({
           next: (res) => {
-            this.tokenService.setToken(res.token)
+            this.tokenService.setUserInfo(res)
             this.loading = false;
             this.errors = ''
             this.refleshService.sendUpdate(true);

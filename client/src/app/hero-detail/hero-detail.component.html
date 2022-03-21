@@ -57,17 +57,19 @@
                     </ng-template>
 
                     <div class="mb-3"></div>
-                    <div *ngIf="editable else btnEdit">
-                        <div class="d-flex">
-                            <button class="btn btn-primary btn-lg me-2" (click)="onSubmit()">Salvar</button>
-                            <button class="btn btn-danger btn-lg" (click)="onCancel()">Cancelar</button>
+                    <div *ngIf="isAuth">
+                        <div *ngIf="editable else btnEdit">
+                            <div class="d-flex">
+                                <button class="btn btn-primary btn-lg me-2" (click)="onSubmit()">Salvar</button>
+                                <button class="btn btn-danger btn-lg" (click)="onCancel()">Cancelar</button>
+                            </div>
                         </div>
+                        <ng-template #btnEdit>      
+                            <div class="col-12">
+                                <button class="btn btn-success btn-lg" (click)="onEdit()">Editar</button>
+                            </div>
+                        </ng-template>
                     </div>
-                    <ng-template #btnEdit>      
-                        <div class="col-12">
-                            <button class="btn btn-success btn-lg" (click)="onEdit()">Editar</button>
-                        </div>
-                    </ng-template>
                 </div>
             </div>
         </div>

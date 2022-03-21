@@ -22,7 +22,6 @@ export class AuthService {
 
     const userResponse: UserResponseDTO = {
       id: savedUser.id,
-      username: savedUser.username,
       token
     }
 
@@ -43,7 +42,6 @@ export class AuthService {
 
       const userResponse: UserResponseDTO = {
         id: userFound.id,
-        username: userFound.username,
         token
       }
 

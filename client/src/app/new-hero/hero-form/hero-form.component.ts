@@ -51,7 +51,7 @@ export class HeroFormComponent implements OnInit {
 
       this.heroService.addHero(hero)
         .subscribe({
-          next: ()=> {
+          next: (result)=> {
             this.loading = false;
             this.submitted = false;
             this.router.navigate(['/heroes'])

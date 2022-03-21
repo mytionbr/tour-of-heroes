@@ -4,6 +4,7 @@ import { HeroService } from '../hero.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common'; 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -17,12 +18,14 @@ export class HeroDetailComponent implements OnInit {
   heroForm: FormGroup;
   submitted: boolean = false;
   loading: boolean = false;
+  isAuth: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) { 
     this.heroForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -34,6 +37,7 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero()
+    this.isAuth = this.authService.isAuthenticated();
   }
 
   getHero(): void {

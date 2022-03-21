@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UserInfo } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -7,15 +8,31 @@ export class TokenService {
 
   constructor() { }
 
-  setToken(token: string) {
-    localStorage.setItem('token', token);
+  setUserInfo(userInfo: UserInfo) {
+    const userInfoString = JSON.stringify(userInfo);
+    localStorage.setItem('userInfo', userInfoString);
+  }
+
+  getUserInfo(): UserInfo | null{
+    const untreatedUserInfo = localStorage.getItem('userInfo');
+    
+    if (!untreatedUserInfo) return null
+
+    const userInfo = JSON.parse(untreatedUserInfo);
+    return userInfo;
+    
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    const untreatedUserInfo = localStorage.getItem('userInfo');
+    
+    if (!untreatedUserInfo) return null
+    
+    const userInfo = JSON.parse(untreatedUserInfo);
+    return userInfo.token;
   }
 
   removeToke() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('userInfo')
   }
 }

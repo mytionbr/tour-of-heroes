@@ -25,6 +25,7 @@ import { AuthModule } from './auth/auth.module';
 import { ShowErrorsModule } from './show-errors/show-errors.module';
 import { LoadingModule } from './loading/loading.module';
 import { NewHeroModule } from './new-hero/new-hero.module';
+import { MyHeroesComponent } from './my-heroes/my-heroes.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { NewHeroModule } from './new-hero/new-hero.module';
     FooterComponent,
     SidebarComponent,
     SidebarLinkComponent,
-    SectionComponent 
+    SectionComponent,
+    MyHeroesComponent 
   ],
   imports: [
     BrowserModule,

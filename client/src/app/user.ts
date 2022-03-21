@@ -12,6 +12,7 @@ export interface UserLogin {
 
 export interface UserResponse {
     id: number;
-    username: string;
     token: string;
 }
+
+export interface UserInfo extends UserResponse {}

@@ -26,7 +26,12 @@ export class HeroService {
   }
 
   public async findByName(name: string): Promise<Hero[]> {
-    const heroes = heroRepository.findByName(name);
+    const heroes = await heroRepository.findByName(name);
+    return heroes;
+  }
+
+  public async findByUser(id: number): Promise<Hero[]> {
+    const heroes = await heroRepository.findByUser(id);
     return heroes;
   }
 }

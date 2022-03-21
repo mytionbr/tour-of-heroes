@@ -3,6 +3,6 @@ export interface HeroDTO {
   about?: string;
   category?: string;
   agency?: string; 
-  userId: number
+  user: {id: number}
 
 }

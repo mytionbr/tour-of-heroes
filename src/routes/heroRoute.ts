@@ -25,13 +25,17 @@ export class HeroRoute {
 
     this.router
       .route('/:heroId')
-      .delete(this.heroController.remove)
-      .put(this.heroController.update)
+      .delete(this.authController.isAuth, this.heroController.remove)
+      .put(this.authController.isAuth, this.heroController.update)
       .get(this.heroController.findById)
 
     this.router
       .route('/name/:heroName')
       .get(this.heroController.findByName)
+
+    this.router
+      .route('/user/:id')
+      .get(this.authController.isAuth,this.heroController.findByUser)
   }
 
   getRoutes(): Router {

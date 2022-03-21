@@ -21,14 +21,13 @@ export class HeroController {
     try {
       const { name, about, category, agency } = req.body;
       const userId = Number(req.auth.id);
-
-      console.log(userId)
+      
       const hero: HeroDTO = {
         name,
         about,
         category,
         agency,
-        userId
+        user:{id: userId}
       };
 
       const { valid, errors } = heroValidator(hero);
@@ -110,6 +109,23 @@ export class HeroController {
       res.status(200).send(heroes);
     } catch (error) {
       res.status(500).send({message: 'Algo deu errado'})
+    }
+  }
+
+  public async findByUser(req: Request, res: Response): Promise<Response> {
+    try {
+      const userId = Number(req.params.id);
+
+      const authId = Number(req.auth.id);
+  
+      if (authId !== userId) {
+       return res.status(403).send({message: 'O usuário não tem permissão para essa operação'});
+      }
+
+      const heroes = await heroService.findByUser(authId);
+      res.status(200).send(heroes);
+    } catch (error) {
+      res.status(500).send({message: 'Algo deu errado'});
     }
   }
 
