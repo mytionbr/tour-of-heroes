@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
@@ -14,7 +15,7 @@ export class MyHeroesComponent implements OnInit {
   loading: boolean = false;
   errors: string | string[] = '';
 
-  constructor(private heroService: HeroService) { 
+  constructor(private heroService: HeroService, private authService: AuthService) { 
   }
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class MyHeroesComponent implements OnInit {
           this.loading = false;
         },
         error: (err) =>{
+          this.authService.checkTokenError(err.status)
           this.loading = false
           this.errors = err.error.message
         }

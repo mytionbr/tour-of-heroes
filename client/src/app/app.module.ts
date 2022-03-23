@@ -26,6 +26,7 @@ import { ShowErrorsModule } from './show-errors/show-errors.module';
 import { LoadingModule } from './loading/loading.module';
 import { NewHeroModule } from './new-hero/new-hero.module';
 import { MyHeroesComponent } from './my-heroes/my-heroes.component';
+import { InterceptorsModule } from './interceptors/interceptors.module';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { MyHeroesComponent } from './my-heroes/my-heroes.component';
     ShowErrorsModule,
     LoadingModule,
     NewHeroModule,
+    InterceptorsModule,
     CollapseModule.forRoot()
   ],
   providers: [],

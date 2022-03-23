@@ -27,16 +27,6 @@ export class HeroService {
     private tokenService: TokenService
   ) {}
 
-  private getAuthHeaders() {
-    const token = this.authService.getUserToken();
-    const httpAuth = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'authorization': `bearer ${token}`
-      })
-    };
-    return httpAuth;
-  }
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.baseUrl).pipe(
@@ -54,8 +44,7 @@ export class HeroService {
 
     const userId = userInfo.id;
     const url = `${this.baseUrl}/user/${userId}`;
-    const headers = this.getAuthHeaders()
-    return this.http.get<Hero[]>(url,headers);
+    return this.http.get<Hero[]>(url);
   }
 
   getHero(id: number): Observable<Hero> {
@@ -67,22 +56,18 @@ export class HeroService {
   }
 
   updateHero(hero: Hero): Observable<any> {
-    const headers = this.getAuthHeaders()
     return this.http
-      .put(`${this.baseUrl}/${hero.id}`, hero, headers);
+      .put(`${this.baseUrl}/${hero.id}`, hero);
   }
 
   addHero(hero: Hero): Observable<Hero> {
-    const headers = this.getAuthHeaders()
-
-    return this.http.post<Hero>(this.baseUrl, hero, headers)
+    return this.http.post<Hero>(this.baseUrl, hero)
   }
 
   deleteHero(id: number): Observable<Hero> {
     const url = `${this.baseUrl}/${id}`;
-    const headers = this.getAuthHeaders();
 
-    return this.http.delete<Hero>(url, headers);
+    return this.http.delete<Hero>(url);
   }
 
   searchHeroes(term: string): Observable<Hero[]> {
