@@ -66,7 +66,7 @@ export class AuthController {
         req.auth = decoded
         next();
       } catch (error) {
-        return res.status(403).send({ message: error.message });
+        return res.status(401).send({ message: error.message });
       }
     } else {
       return res.status(403).send({ message: 'Sem token' });

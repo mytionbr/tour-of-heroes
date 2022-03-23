@@ -5,6 +5,7 @@ import { User, UserResponse } from '../user';
 import { environment } from '../../environments/environment';
 import { TokenService } from '../token.service';
 import { Router } from '@angular/router';
+import { RefreshService } from '../refresh.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
 
   private baseUrl = environment.api_url
 
-  constructor(private http: HttpClient, private tokenService: TokenService, private router: Router) { }
+  constructor(private http: HttpClient, private tokenService: TokenService, private router: Router, private refleshService: RefreshService) { }
 
   signin(email: string, password: string) {
     const url = `${this.baseUrl}/auth/signin`
@@ -27,6 +28,7 @@ export class AuthService {
 
   signout(){
     this.tokenService.removeToke();
+    this.refleshService.sendUpdate(true);
   }
 
   getUserToken(){
@@ -56,19 +58,10 @@ export class AuthService {
   
   getHttpOptions() {
     const token = this.getUserToken();
-
     const headers = {
       'Content-Type':  'application/json',
       'authorization': `bearer ${token}`
     }
-
-    // headers.append('Content-Type', 'application/json');
-
-    // if (token) {
-    //   headers.append('authorization', `bearer ${token}`)
-    // }
-
-    console.log(headers)
 
     return headers;
   }

@@ -16,7 +16,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorsService,
       multi: true
-    }
+    },
   ]
 })
 export class InterceptorsModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  Router } from '@angular/router';
 import { RefreshService } from 'src/app/refresh.service';
 import { TokenService } from 'src/app/token.service';
 import { User, UserLogin } from '../../user';
@@ -24,7 +25,8 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private signupValidationService: SignupValidationService,
     private tokenService: TokenService,
-    private refleshService: RefreshService) {
+    private refleshService: RefreshService,
+    private router: Router) {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required]],
@@ -80,6 +82,7 @@ export class SignupComponent implements OnInit {
             this.loading = false;
             this.errors = ''
             this.refleshService.sendUpdate(true);
+            this.router.navigate(['/heroes/my'])
           },
           error: (e)=>{
             console.log(e)

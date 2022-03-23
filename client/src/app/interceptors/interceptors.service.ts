@@ -1,22 +1,43 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+  HttpResponse
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InterceptorsService implements HttpInterceptor{
+export class InterceptorsService implements HttpInterceptor {
+  constructor(private authService: AuthService, private router: Router) {}
 
-  constructor(private authService: AuthService) { }
-  
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {    
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     const httpOptions = this.authService.getHttpOptions();
 
-    req  = req.clone({
-        setHeaders: {...httpOptions}
+    req = req.clone({
+      setHeaders: { ...httpOptions }
+    });
+
+    return next.handle(req).pipe(
+      tap(()=>{},
+      (err) => {
+        if(err instanceof HttpErrorResponse){
+          if (err.status === 401) {
+            this.authService.signout();
+            this.router.navigate(['/signin'])
+          }
+          return;
+        }
       })
-    
-    return next.handle(req);
+    )
   }
 }

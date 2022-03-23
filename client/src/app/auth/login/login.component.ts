@@ -69,6 +69,7 @@ export class LoginComponent implements OnInit {
             this.loading = false;
             this.errors = ''
             this.refleshService.sendUpdate(true);
+            this.router.navigate(['/heroes/my'])
           },
           error: (e) => {
             console.log(e)
