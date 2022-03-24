@@ -1,0 +1,16 @@
+<div class="action">
+    <div class="target-element" (click)="onShow()">
+        <ng-content></ng-content>
+    </div>
+    <div [hidden]="!isShow" class="menu">
+        <ul *ngIf="isLoggedIn; else login">
+            <li><a routerLink="/signout" (click)="onShow()"><i class="bi bi-box-arrow-left"></i>Sair</a></li>
+        </ul>
+        <ng-template #login>
+            <ul>
+                <li><a routerLink="/signin" (click)="onShow()"><i class="bi bi-box-arrow-right"></i>Login</a></li>
+                <li><a routerLink="/signup" (click)="onShow()"><i class="bi bi-person-plus"></i>Cadastro</a></li>
+            </ul>
+        </ng-template>
+    </div>
+</div>

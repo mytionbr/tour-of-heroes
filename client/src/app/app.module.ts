@@ -28,6 +28,7 @@ import { NewHeroModule } from './new-hero/new-hero.module';
 import { MyHeroesComponent } from './my-heroes/my-heroes.component';
 import { InterceptorsModule } from './interceptors/interceptors.module';
 import { HeroThumbnailsComponent } from './hero-thumbnails/hero-thumbnails.component';
+import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { HeroThumbnailsComponent } from './hero-thumbnails/hero-thumbnails.compo
     SidebarLinkComponent,
     SectionComponent,
     MyHeroesComponent,
-    HeroThumbnailsComponent 
+    HeroThumbnailsComponent,
+    DropdownMenuComponent 
   ],
   imports: [
     BrowserModule,
