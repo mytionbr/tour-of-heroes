@@ -33,7 +33,6 @@ export class HeroFormComponent implements OnInit {
   ngOnInit(): void {
     this.heroService.getCategories()
       .subscribe( categories =>{
-        console.log(categories)
          this.categories = categories
         });
   }
@@ -65,8 +64,8 @@ export class HeroFormComponent implements OnInit {
           error: (errors)=> {
             this.loading = false;
             this.submitted = false;
-
-            this.errors = errors.message;
+            console.log(errors)
+            this.errors = errors.error.message || errors.message;
           }
         })
     
