@@ -6,11 +6,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ShowErrorsModule } from '../show-errors/show-errors.module';
 import { LoadingModule } from '../loading/loading.module';
+import { SignoutComponent } from './signout/signout.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SignoutComponent
   ],
   imports: [
     CommonModule,

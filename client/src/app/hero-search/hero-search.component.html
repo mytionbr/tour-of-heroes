@@ -11,7 +11,7 @@
 
     <div class="container-md d-flex flex-row justify-content-around align-content-between flex-wrap mx-auto my-4">
         <div class="mb-2 mb-md-0" *ngFor="let hero of heroes$ | async">
-            <app-dashboard-card link="/detail/{{hero.id}}" name="{{hero.name}}"></app-dashboard-card>
+            <app-hero-thumbnails [hero]="hero"></app-hero-thumbnails>
         </div>
     </div>
 

@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'heroes/new', component: NewHeroComponent, canActivate: [AuthGuard]},
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'search', component: HeroSearchComponent },
   { path: 'auth', component: AuthComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ]
