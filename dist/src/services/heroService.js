@@ -20,7 +20,11 @@ class HeroService {
         await heroRepository.update(id, hero);
     }
     async findByName(name) {
-        const heroes = heroRepository.findByName(name);
+        const heroes = await heroRepository.findByName(name);
+        return heroes;
+    }
+    async findByUser(id) {
+        const heroes = await heroRepository.findByUser(id);
         return heroes;
     }
 }

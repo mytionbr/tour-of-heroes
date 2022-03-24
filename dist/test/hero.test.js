@@ -75,7 +75,7 @@ describe('Heroes tests', () => {
             expect(response.body).toEqual(expect.objectContaining(newHero));
             await heroService.remove(response.body);
         });
-        it('Should return validation error when name field is invalid', async () => {
+        it('Should return a validation error when name field is invalid', async () => {
             const newHero = {
                 name: ''
             };

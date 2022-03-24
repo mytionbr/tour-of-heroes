@@ -17,11 +17,16 @@ class HeroController {
     }
     async create(req, res) {
         try {
-            const { name } = req.body;
+            const { name, about, category, agency } = req.body;
+            const userId = Number(req.auth.id);
             const hero = {
-                name: name
+                name,
+                about,
+                category,
+                agency,
+                user: { id: userId }
             };
-            const { valid, errors } = await (0, heroValidator_1.heroValidator)(hero);
+            const { valid, errors } = (0, heroValidator_1.heroValidator)(hero);
             if (!valid) {
                 return res.status(400).send({ message: Object.values(errors) });
             }
@@ -50,7 +55,7 @@ class HeroController {
         try {
             const heroId = Number(req.params.heroId);
             const heroToUpdate = req.body;
-            const { valid, errors } = await (0, heroValidator_1.heroValidator)(heroToUpdate);
+            const { valid, errors } = (0, heroValidator_1.heroValidator)(heroToUpdate);
             if (!valid) {
                 return res.status(400).send({ message: Object.values(errors) });
             }
@@ -82,6 +87,20 @@ class HeroController {
         try {
             const heroName = req.params.heroName;
             const heroes = await heroService.findByName(heroName);
+            res.status(200).send(heroes);
+        }
+        catch (error) {
+            res.status(500).send({ message: 'Algo deu errado' });
+        }
+    }
+    async findByUser(req, res) {
+        try {
+            const userId = Number(req.params.id);
+            const authId = Number(req.auth.id);
+            if (authId !== userId) {
+                return res.status(403).send({ message: 'O usuário não tem permissão para essa operação' });
+            }
+            const heroes = await heroService.findByUser(authId);
             res.status(200).send(heroes);
         }
         catch (error) {

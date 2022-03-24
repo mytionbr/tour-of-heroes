@@ -9,43 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Hero = void 0;
+exports.User = void 0;
 const typeorm_1 = require("typeorm");
-const User_1 = require("./User");
-let Hero = class Hero {
+const Hero_1 = require("./Hero");
+let User = class User {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Hero.prototype, "id", void 0);
+], User.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ unique: true }),
+    __metadata("design:type", String)
+], User.prototype, "email", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ unique: true }),
+    __metadata("design:type", String)
+], User.prototype, "username", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Hero.prototype, "name", void 0);
+], User.prototype, "password", void 0);
 __decorate([
-    (0, typeorm_1.Column)({
-        nullable: true
-    }),
-    __metadata("design:type", String)
-], Hero.prototype, "agency", void 0);
-__decorate([
-    (0, typeorm_1.Column)({
-        nullable: true
-    }),
-    __metadata("design:type", String)
-], Hero.prototype, "category", void 0);
-__decorate([
-    (0, typeorm_1.Column)({
-        nullable: true
-    }),
-    __metadata("design:type", String)
-], Hero.prototype, "about", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(type => User_1.User, user => user.heroes),
-    __metadata("design:type", User_1.User)
-], Hero.prototype, "user", void 0);
-Hero = __decorate([
+    (0, typeorm_1.OneToMany)(type => Hero_1.Hero, hero => hero.user),
+    __metadata("design:type", Array)
+], User.prototype, "heroes", void 0);
+User = __decorate([
     (0, typeorm_1.Entity)()
-], Hero);
-exports.Hero = Hero;
-//# sourceMappingURL=Hero.js.map
+], User);
+exports.User = User;
+//# sourceMappingURL=User.js.map

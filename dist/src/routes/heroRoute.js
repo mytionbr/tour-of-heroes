@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HeroRoute = void 0;
 const express_1 = require("express");
+const authController_1 = require("../controllers/authController");
 const heroController_1 = require("../controllers/heroController");
 class HeroRoute {
     constructor() {
@@ -10,21 +11,25 @@ class HeroRoute {
         this.setupControllers();
     }
     init() {
-        this.controller = new heroController_1.HeroController();
+        this.heroController = new heroController_1.HeroController();
+        this.authController = new authController_1.AuthController();
     }
     setupControllers() {
         this.router
             .route('/')
-            .get(this.controller.getAll)
-            .post(this.controller.create);
+            .get(this.heroController.getAll)
+            .post(this.authController.isAuth, this.heroController.create);
         this.router
             .route('/:heroId')
-            .delete(this.controller.remove)
-            .put(this.controller.update)
-            .get(this.controller.findById);
+            .delete(this.authController.isAuth, this.heroController.remove)
+            .put(this.authController.isAuth, this.heroController.update)
+            .get(this.heroController.findById);
         this.router
             .route('/name/:heroName')
-            .get(this.controller.findByName);
+            .get(this.heroController.findByName);
+        this.router
+            .route('/user/:id')
+            .get(this.authController.isAuth, this.heroController.findByUser);
     }
     getRoutes() {
         return this.router;

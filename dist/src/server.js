@@ -7,6 +7,7 @@ const cors = require("cors");
 const database = require("./database");
 const heroRoute_1 = require("./routes/heroRoute");
 const path = require("path");
+const authRoute_1 = require("./routes/authRoute");
 class Server {
     constructor(port = 3000) {
         this.port = port;
@@ -22,7 +23,9 @@ class Server {
     setupRoutes() {
         const rootURL = "/api";
         const heroRoutes = new heroRoute_1.HeroRoute().getRoutes();
+        const authRoutes = new authRoute_1.default().getRoutes();
         this.app.use(rootURL + '/heroes', heroRoutes);
+        this.app.use(rootURL + '/auth', authRoutes);
     }
     setupExpress() {
         this.app.use(bodyParser.json());
@@ -33,7 +36,6 @@ class Server {
     }
     setupClient() {
         const __dirname = path.resolve();
-        console.log(__dirname);
         this.app.use(express.static(path.join(__dirname, '/client/dist/angular-tour-of-heroes')));
         this.app.get('*', (req, res) => {
             res.sendFile(path.join(__dirname, '/client/dist/angular-tour-of-heroes/index.html'));

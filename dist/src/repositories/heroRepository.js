@@ -33,6 +33,17 @@ class HeroRepository {
         const heroes = await repository.find({ name: (0, typeorm_1.ILike)(`%${name}%`) });
         return heroes;
     }
+    async findByUser(id) {
+        const repository = this.getRepository();
+        const heroes = await repository.find({
+            where: {
+                user: {
+                    id
+                }
+            }
+        });
+        return heroes;
+    }
     getRepository() {
         return (0, typeorm_1.getRepository)(Hero_1.Hero);
     }
