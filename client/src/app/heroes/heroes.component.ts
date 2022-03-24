@@ -11,7 +11,6 @@ import { MessageService } from '../message.service';
 export class HeroesComponent implements OnInit {
 
   heroes: Hero[] = [];
-  selectedHero?: Hero;
   loading: boolean = false;
 
   constructor(private heroService: HeroService) { 
@@ -28,16 +27,6 @@ export class HeroesComponent implements OnInit {
         this.heroes = heroes
         this.loading = false;
       })
-  }
-
-  onDelete(event: any): void {
-    this.loading = true;
-    const { hero } = event
-    this.heroService.deleteHero(hero.id).subscribe(
-      ()=>{
-        this.loading = false;
-        this.getHeroes();
-      });
   }
 
 }

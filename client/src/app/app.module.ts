@@ -27,6 +27,7 @@ import { LoadingModule } from './loading/loading.module';
 import { NewHeroModule } from './new-hero/new-hero.module';
 import { MyHeroesComponent } from './my-heroes/my-heroes.component';
 import { InterceptorsModule } from './interceptors/interceptors.module';
+import { HeroThumbnailsComponent } from './hero-thumbnails/hero-thumbnails.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { InterceptorsModule } from './interceptors/interceptors.module';
     SidebarComponent,
     SidebarLinkComponent,
     SectionComponent,
-    MyHeroesComponent 
+    MyHeroesComponent,
+    HeroThumbnailsComponent 
   ],
   imports: [
     BrowserModule,
