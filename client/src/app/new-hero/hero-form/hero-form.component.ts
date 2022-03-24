@@ -15,6 +15,7 @@ export class HeroFormComponent implements OnInit {
   submitted: boolean = false;
   loading: boolean = false;
   errors: string | string[] = '';
+  categories: string[] = [];
 
   constructor(private formBuilder: FormBuilder, private heroService: HeroService, private router: Router) {
     this.heroForm = this.formBuilder.group({
@@ -30,6 +31,11 @@ export class HeroFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.heroService.getCategories()
+      .subscribe( categories =>{
+        console.log(categories)
+         this.categories = categories
+        });
   }
 
 

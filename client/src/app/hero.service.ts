@@ -85,6 +85,11 @@ export class HeroService {
     );
   }
 
+  getCategories(): Observable<string[]>{
+    const url = `${this.baseUrl}/categories`;
+    return this.http.get<string[]>(url);
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.log(error);

@@ -10,8 +10,11 @@
         </div>
         <div class="mb-3">
             <label for="category" class="form-label text-white">Categoria</label>
-            <input type="text" class="form-control" id="category" formControlName="category" placeholder="Ex: DC">
+            <select name="category" formControlName="category" id="category" class="form-select">
+                <option [ngValue]="i" *ngFor="let i of categories">{{i}}</option>
+            </select>
         </div>
+  
         <div class="mb-3">
             <label for="agency" class="form-label text-white">Grupo</label>
             <input type="text" class="form-control" id="agency" formControlName="agency" placeholder="Ex: Liga da justiça">

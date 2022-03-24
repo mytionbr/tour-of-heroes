@@ -19,6 +19,7 @@ export class HeroDetailComponent implements OnInit {
   submitted: boolean = false;
   loading: boolean = false;
   isAuth: boolean = false;
+  categories: string[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -38,6 +39,11 @@ export class HeroDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getHero()
     this.isAuth = this.authService.isAuthenticated();
+
+    if(this.isAuth) {
+      this.heroService.getCategories()
+        .subscribe(categories => this.categories = categories );
+    }
   }
 
   getHero(): void {
