@@ -10,6 +10,7 @@ export class SectionComponent implements OnInit {
 
   @Input() title: string = '';
   @Input('popularHeroes') heroes: Hero[] = [];
+  @Input() category: string = '';
 
   constructor() { }
 

@@ -28,8 +28,14 @@ export class HeroService {
   ) {}
 
 
-  getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.baseUrl).pipe(
+  getHeroes(category = 'all'): Observable<Hero[]> {
+    let url = this.baseUrl
+    
+    if(category !== 'all' ){
+      url += `?category=${category}`
+    }
+    console.log(url)
+    return this.http.get<Hero[]>(url).pipe(
       tap((_) => this.log('fetched heroes')),
       catchError(this.handleError<Hero[]>('getHeroes', []))
     );

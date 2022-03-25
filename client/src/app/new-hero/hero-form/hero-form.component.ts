@@ -59,7 +59,7 @@ export class HeroFormComponent implements OnInit {
           next: (result)=> {
             this.loading = false;
             this.submitted = false;
-            this.router.navigate(['/heroes'])
+            this.router.navigate(['/heroes/category/all'])
           },
           error: (errors)=> {
             this.loading = false;

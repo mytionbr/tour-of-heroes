@@ -12,7 +12,7 @@ import { NewHeroComponent } from './new-hero/new-hero.component';
 import { MyHeroesComponent } from './my-heroes/my-heroes.component';
 
 const routes: Routes = [
-  { path: 'heroes', component: HeroesComponent},
+  { path: 'heroes/category/:category', component: HeroesComponent},
   { path: 'heroes/my', component: MyHeroesComponent, canActivate: [AuthGuard]},
   { path: 'heroes/new', component: NewHeroComponent, canActivate: [AuthGuard]},
   { path: 'detail/:id', component: HeroDetailComponent },
