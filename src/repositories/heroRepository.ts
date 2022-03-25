@@ -1,14 +1,15 @@
 import { Hero } from '../entity/Hero';
-import { getRepository, ILike, Like, Repository } from 'typeorm';
+import { getRepository, ILike, Repository } from 'typeorm';
 import { HeroDTO } from '../dtos/heroDTO';
 
 export class HeroRepository {
-  public async getAll(): Promise<Hero[]> {
+  public async get(category?: string): Promise<Hero[]> {
     const repository = this.getRepository();
 
-    const heroes = await repository.find();
-
-    return heroes;
+   if (category){
+     return await repository.find({where: {category}})
+   }
+   return await repository.find()
   }
 
   public async create(hero: HeroDTO): Promise<Hero> {

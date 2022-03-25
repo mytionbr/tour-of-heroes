@@ -1,12 +1,23 @@
-import { HeroDTO } from '..//dtos/heroDTO';
+import { Categories } from '../enum/Categories';
+import { HeroDTO } from '../dtos/heroDTO';
 import { Hero } from '../entity/Hero';
 import { HeroRepository } from '../repositories/heroRepository';
+import { hasItem } from '../utils/hasItem';
 
 const heroRepository = new HeroRepository();
 
 export class HeroService {
-  public async getAll(): Promise<Hero[]> {
-    return await heroRepository.getAll();
+
+  public async get(category?: string): Promise<Hero[]> {
+    if(category){
+      const categoryExists = hasItem(category, Object.values(Categories));
+
+      if(!categoryExists){
+        throw new Error('A categoria fornecida não existe')
+      }
+    }
+
+    return await heroRepository.get(category);
   }
 
   public async create(hero: HeroDTO): Promise<Hero> {
@@ -33,5 +44,10 @@ export class HeroService {
   public async findByUser(id: number): Promise<Hero[]> {
     const heroes = await heroRepository.findByUser(id);
     return heroes;
+  }
+
+  public getCategories(): string[] {
+    const categories = Object.values(Categories) as string[];
+    return categories;
   }
 }

@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { Hero } from '../entity/Hero';
 import { HeroDTO } from '../dtos/heroDTO';
 import { heroValidator } from '../validators/heroValidator';
 import { HeroService } from '../services/heroService';
@@ -9,7 +8,10 @@ const heroService = new HeroService();
 export class HeroController {
   public async getAll(req: Request, res: Response): Promise<void> {
     try {
-      const heroes = await heroService.getAll();
+      const categoryParam = req.query.category;
+      const category = categoryParam ? String(categoryParam).toUpperCase() : ''
+
+      const heroes = await heroService.get(category);
       res.status(200).send(heroes);
     } catch (error) {
       console.log(error)
@@ -30,7 +32,7 @@ export class HeroController {
         user:{id: userId}
       };
 
-      const { valid, errors } = heroValidator(hero);
+      const { valid, errors } = await heroValidator(hero);
 
       if (!valid) {
         return res.status(400).send({ message: Object.values(errors) });
@@ -68,7 +70,7 @@ export class HeroController {
       const heroId = Number(req.params.heroId);
       const heroToUpdate = req.body;
 
-      const { valid, errors } = heroValidator(heroToUpdate);
+      const { valid, errors } = await heroValidator(heroToUpdate);
 
       if (!valid) {
         return res.status(400).send({ message: Object.values(errors) });
@@ -124,6 +126,16 @@ export class HeroController {
 
       const heroes = await heroService.findByUser(authId);
       res.status(200).send(heroes);
+    } catch (error) {
+      res.status(500).send({message: 'Algo deu errado'});
+    }
+  }
+
+  public getCategories(req: Request, res: Response): void {
+    try {
+      const categories = heroService.getCategories();
+
+      res.status(200).send(categories);
     } catch (error) {
       res.status(500).send({message: 'Algo deu errado'});
     }

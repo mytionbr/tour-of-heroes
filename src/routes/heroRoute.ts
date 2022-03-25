@@ -24,6 +24,10 @@ export class HeroRoute {
       .post(this.authController.isAuth,this.heroController.create);
 
     this.router
+      .route('/categories')
+      .get(this.heroController.getCategories)
+
+    this.router
       .route('/:heroId')
       .delete(this.authController.isAuth, this.heroController.remove)
       .put(this.authController.isAuth, this.heroController.update)
@@ -36,6 +40,8 @@ export class HeroRoute {
     this.router
       .route('/user/:id')
       .get(this.authController.isAuth, this.heroController.findByUser)
+
+   
   }
 
   getRoutes(): Router {
